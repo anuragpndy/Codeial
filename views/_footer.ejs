@@ -1,0 +1,10 @@
+<footer id="footer">
+<p>&copy; Coding Ninjas. All Rights Reserved</p>
+<nav>
+    <span><a href="/">Home</a></span>
+    <% if(locals.user) { %>
+        <span><a href="/users/profile/<%= locals.user.id %>">Profile</a></span>
+        <% } %>
+    
+</nav>
+</footer>

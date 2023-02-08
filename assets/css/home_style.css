@@ -1,0 +1,197 @@
+#home-container
+{
+    display: flex;
+}
+#feed-posts
+{
+    width: 80%;
+    padding-left: 100px;
+    margin-top: -10px;
+}
+#new-post-form{
+    display: flex;
+    margin-top: -10px;
+}
+
+#new-post-form textarea{
+    padding: 5px;
+    border: 2px solid black;
+    outline: none;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#new-post-form input{
+    border: 2px solid #8b0000;
+    font-weight: 600;
+    border-radius: 4px;
+    height: 40px;
+    color:brown;
+    background-color:#ffd166 ;
+    margin-top:auto;
+    margin-left: 20px;
+}
+#new-post-form input:hover{
+    border: 2px solid #8b0000;
+    color:#ffd166;
+    background-color:#8b0000 ;
+}
+
+#posts-list-container{
+    margin-top: -10px;
+}
+#posts-list-container > ul{
+    padding: 0px 100px;
+    list-style-type: none;
+    margin-top: 0px;
+}
+#posts-list-container > ul > li{
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+#users-section
+{
+    width: 22%;
+    padding-left: 10px;
+    margin-top: -10px;
+    border-left:1px solid lightgray ;
+    height: 810px;
+}
+#users-section div
+{
+    height: 43%;
+}
+#users-section h4{
+    margin-bottom: 0px;
+}
+
+#users-section ul{
+    list-style-type: none;
+    margin-top: 0px;
+    text-align: left;
+}
+
+#users-section ul li{
+    margin-left: -40px;
+    margin-bottom: -10px;
+    display: block;
+    text-align: left;
+    text-decoration: none;
+}
+
+#users-section ul li a{
+    text-decoration: none;
+}
+
+#users,#friends{
+    overflow-y:auto;
+}
+
+/* Friends list style */
+.friend_info{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+
+/* Post styles */
+#posts-list-container > ul >li{
+    text-align: justify;
+    border-bottom: 1px solid black;
+}
+
+.post_user{
+    display: block;
+    text-align: right;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.post_likes  a {
+    text-decoration: none;
+    display: inline;
+    color: #8b0000;
+}
+
+.delete_post{
+    margin-left: 10px;
+}
+.delete_post > a{
+    text-decoration: none;
+    color: red;
+}
+
+.post-comments{
+    margin-top: -10px ;
+}
+.post-comments > form{
+    margin-top: 0px;
+    display: flex;
+}
+
+.post-comments > textarea{
+    padding: 5px;
+    border: 2px solid black;
+    outline: none;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.post-comments input{
+    border: 2px solid #8b0000;
+    font-weight: 600;
+    border-radius: 4px;
+    color:brown;
+    background-color:#ffd166;
+    margin-top:auto;
+    margin-left: 20px;
+}
+.post-comments input:hover{
+    border: 2px solid #8b0000;
+    color:#ffd166;
+    background-color:#8b0000 ;
+}
+
+
+.post-comments-list{
+    margin-top: -10px;
+}
+.post-comments-list > ul{
+    padding-left: 100px;
+    list-style-type: none;
+    margin-top: 0px;
+ }
+ 
+.post-comments-list > ul > li{
+    margin-left: 0px;
+    margin-top: -10px;
+    margin-bottom: 0px;
+    padding-left: 5px;
+    padding-right: 100px;
+    padding-bottom: 0px;
+}
+
+.comment_content{
+    width: auto;
+}
+.comment_user{
+    font-style: italic;
+    font-weight: 600;   
+}
+
+.comment_likes a{
+    text-decoration: none;
+    display: inline;
+    margin-left: 10px;
+    color: #8b0000;
+}
+
+.delete_comment{
+    margin-left: 0px;
+}
+.delete_comment > a{
+    text-decoration: none;
+    color: red;
+}

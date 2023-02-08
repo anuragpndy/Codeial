@@ -1,0 +1,8 @@
+<h1><%=heading%></h1>
+
+<form action="/accounts/reset-pass-final" method="post">
+    <input type="password" name="password" required placeholder="Password" required>
+    <input type="password" name="confirmPassword" required placeholder="Confirm Password" required>
+    <input type="hidden" name="accessToken"  value="<%=accessToken%>">
+    <input type="submit" value="Update Password">
+</form>

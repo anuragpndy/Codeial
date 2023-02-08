@@ -1,0 +1,45 @@
+<li id="comment-<%= comment._id %>">
+    <p>
+        <span class="comment_content"><%= comment.content %></span>
+        <span class="comment_user"><small>
+            -: <%= comment.user.name %>
+        </small></span><br>
+        <span class="comment_likes"><small>
+            <% if(locals.user) { %>
+                <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%= comment._id %>&type=Comment">
+                    <i class="fa-solid fa-heart">&nbsp;<small><%= comment.likes.length %></small></i><span class="sr-only"> Likes</span> 
+                </a>
+            <% } else { %>
+                <i class="fa-solid fa-heart">&nbsp;<small><%= comment.likes.length %></small></i><span class="sr-only"> Likes</span>  
+            <% } %>
+        </small></span>
+        <span class="comment_delete">
+            <% if(locals.user && ( locals.user.id==post.user.id || locals.user.id==comment.user.id) ) { %>
+                <small class="delete_comment">
+                    <a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>/<%= post.id %>">
+                        <i class="fa-solid fa-trash"></i><span class="sr-only">x</span>    
+                    </a>
+                </small>
+            <% } %>
+        </span>
+        <!-- Early Layout -->
+        <!-- <% if(locals.user && ( locals.user.id==post.user.id || locals.user.id==comment.user.id) ) { %>
+            <small>
+                <a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>/<%= post.id %>">X</a>
+            </small>
+        <% } %>
+        <%= comment.content %>
+        <br>
+        <small><%= comment.user.name %></small>
+        <br>
+        <small>
+            <% if(locals.user) { %>
+                <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%= comment._id %>&type=Comment">
+                    <%= comment.likes.length %> Likes
+                </a>
+            <% } else { %>
+                <%= comment.likes.length %> Likes
+            <% } %>
+        </small> -->
+    </p>
+</li>

@@ -1,0 +1,40 @@
+<!-- //updating user details -->
+<link rel="stylesheet" type="text/css" href="<%= assetPath('css/user_profile_style.css') %>">
+<script src="<%= assetPath('javascript/user_profile_script.js') %>"></script>
+<div id="profile_container">
+<div>
+    <img src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>" width="100" id="user_image"><br>
+        <% if (user.id!=profile_user.id) {  %>
+        <span>
+            <a href="/friendship/toggle/?id=<%= profile_user.id %>" id="toggle_friendship">
+            <% if(friend) {%>
+            Remove Friend
+            <% } else{ %>
+            Add Friend
+            <% } %>
+        </a></span>
+        <%  } %>
+</div>
+<div id="user_info">
+    <!-- show show only profile info -->
+    <p><label>Name : </label><%= profile_user.name %></p>
+    <p><label>Email : </label><%= profile_user.email %></p>
+</div>
+</div>
+<% if (user.id==profile_user.id) { %>
+<div id="current_user_form">
+    <h3> Update Form</h3>
+    <div id="form_inputs">
+        
+<!-- if current user matched profile user then show form -->
+<form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="post">
+    <input type="text" class="input" name="name" placeholder="Your name ..." value="<%= profile_user.name %>" required>
+    <input type="text" class="input" name="email" placeholder="Your email ..." value="<%= profile_user.email %>" required>
+    <input type="file" class="input" name="avatar" placeholder="Profile picture..." accept="image/png,image/jpeg,image/jpg,image/gif,image/bmp,image/tiff" id="imgInp" >
+    <div id="preview_container" style="display: none;"><input type="button" value="x" id="close_preview" ><img id="blah" src="" alt="your image"/></div>
+    <input type="button" class="btn" id="btn_preview" value="Preview">
+    <input type="submit" class="btn" value="Update">
+    </div>
+</div>
+</form>
+<% } %>

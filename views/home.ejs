@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="<%= assetPath('css/home_style.css') %>" >
+<link rel="stylesheet" href="<%= assetPath('css/chatbox_style.css') %>" >
+<div id="home-container">
+    <section id="feed-posts">
+        <h3>Posts</h3>
+        <% if(locals.user) { %>
+        <form action="/posts/create" method="post" id="new-post-form">
+            <textarea name="content" cols="60" rows="3" placeholder="Type Here" id="postTextArea"></textarea> 
+            <input type="submit" value="Post">
+        </form>
+        <% } %>
+        <div id="posts-list-container">
+            <ul>
+                <% for(post of posts) { %>
+                   <%- include('_post') -%> 
+                <% } %>
+            </ul>
+        </div>
+    </section>
+    <section id="users-section">
+        <% if(locals.user) { %>
+            <h4>Friends <%= %><i class="fa-solid fa-people-arrows-left-right"></i></h4>
+        <div id="friends">
+            <ul>
+            <% for(u of friends) { %>
+                <li>
+                    <p class="friend_info">
+                        <a href="/users/profile/<%= u.userFriend.id %>"><%= u.userFriend.name %></a>
+                        <a href="/friendship/delete/?id=<%= u.userFriend.id %>" class="delete_friendship">
+                            <i class="fa-solid fa-user-xmark"></i>
+                            <!-- Alternate text incase , fontawesome resource could not be loaded -->
+                            <span class="sr-only">x</span>
+                        </a>
+                    </p>
+                </li>
+            <% } %>
+            </ul>
+        </div>
+        <% } %>
+        <h4>Users <i class="fa-solid fa-users"></i></h4>
+        <div id="users">
+            <ul>
+            <% for(u of all_users) { %>
+                <li>
+                    <p class="friend_info">
+                        <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+                    </p>
+                </li>
+            <% } %>
+            </ul>
+        </div>
+    </section>
+    
+    <%- include('_chatbox') -%>
+    
+    
+</div>
+
+<script type="text/javascript" src="<%= assetPath('javascript/home_post_comments_script.js') %>" ></script>
+<script type="text/javascript" src="<%= assetPath('javascript/home_posts_script.js') %>" ></script>
+<script type="text/javascript" src="<%= assetPath('javascript/toggle_likes_script.js') %>" ></script>
+
+<script>
+    $(' .toggle-like-button').each(function(){
+        let self=this;
+        let toggleLike=new ToggleLike(self);
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.js" integrity="sha512-/xb5+PNOA079FJkngKI2jvID5lyiqdHXaUUcfmzE0X0BdpkgzIWHC59LOG90a2jDcOyRsd1luOr24UCCAG8NNw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="<%= assetPath('javascript/chat_engine_script.js') %>" ></script>
+<% if(locals.user){ %>
+    <script>
+        new ChatEngine('user-chat-box','<%= locals.user.email %>','<%= locals.user.name %>','<%= locals.env.name %>');
+    </script>    
+<% } %>
